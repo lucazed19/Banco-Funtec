@@ -1,26 +1,32 @@
 package contas;
 
 public class Contas implements IContas{
-	private static int SEQUENCIA = 0;
+	private static int sequencia = 0;
 	protected String agencia;
 	protected int numero;
 	protected double saldo = 0;
 	protected String tipo;
+	protected String titular;
 	
-	public Contas(String agencia, String tipo) {
-		this.numero = SEQUENCIA++;
+	public Contas(String agencia, String tipo, String titular) {
+		this.numero = sequencia++;
 		this.agencia = agencia;
 		if (tipo =="Corrente") {
 			this.tipo = "Conta Corrente";
 		} else if(tipo =="Poupança") {
 			this.tipo = "Conta Poupança";
 		}
+		this.titular = titular;
 	}
 	
+	
+	public String getTitular() {
+		return titular;
+	}
+
 	public String getTipo() {
 		return tipo;
 	}
-
 
 	public String getAgencia() {
 		return agencia;
@@ -46,6 +52,7 @@ public class Contas implements IContas{
 	}
 	
 	public void imprimirExtrato() {
+		System.out.println("\nTitular: "+ this.titular);
 		System.out.println("Agencia: "+ this.agencia);
 		System.out.println("Numero: "+ this.numero);
 		System.out.println("Saldo: "+ this.saldo);
